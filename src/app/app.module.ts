@@ -10,6 +10,8 @@ import { ProductsComponent } from './shop/products/products.component';
 import { EditorComponent } from './shop/products/editor/editor.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { UsersComponent } from './shop/users/users.component';
+import { EditorUComponent } from './shop/users/editor-u/editor-u.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ShopComponent,
     ShippingComponent,
     ProductsComponent,
-    EditorComponent
+    EditorComponent,
+    UsersComponent,
+    EditorUComponent
   ],
   imports: [
     BrowserModule,

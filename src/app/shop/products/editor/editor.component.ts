@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../Product";
 import {ProductStorageService} from "../../../product-storage.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClientService} from "../../../http-client.service";
 
 @Component({
   selector: 'app-editor',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class EditorComponent implements OnInit {
 
   constructor(private productStorage: ProductStorageService, private router:Router,
-              private activeRoute:ActivatedRoute) { }
+              private activeRoute:ActivatedRoute, private httpClient: HttpClientService) { }
 
   ngOnInit(): void {
     this.getProductToEdit();
@@ -19,15 +20,17 @@ export class EditorComponent implements OnInit {
   product: Product = new Product();
 
   saveProduct(product: Product) {
-    this.productStorage.saveProduct(product);
-    this.router.navigate(['/shop'])
+    this.httpClient.saveProduct(product).subscribe(r=>{
+      this.router.navigate(['/shop'])
+    });
+
 
   }
   getProductToEdit(){
       this.activeRoute.paramMap.subscribe(params =>{
         const id= params.get('id');
         if(id){
-          this.product = this.productStorage.getProduct(Number.parseInt(id));
+        this.httpClient.getProduct(Number.parseInt(id)).subscribe(p=> this.product =p);
         }
 
       })

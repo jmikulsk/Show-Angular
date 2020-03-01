@@ -19,4 +19,10 @@ export class HttpClientService {
   removeProducts(id:number){
      return this.httpClient.delete(`${BASE_URL}/products/remove/${id}`)
   }
+  getProduct(id: number){
+    return this.httpClient.get<Product>(`${BASE_URL}/products/single/${id}`)
+  }
+  saveProduct(product: Product){
+    return this.httpClient.post(`${BASE_URL}/products/save`,JSON.stringify(product),HTTP_OPTIONS)
+  }
 }
