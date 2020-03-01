@@ -11,21 +11,21 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+  <tr *ngFor="let product of products; let i =index">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.quantity}}</td>
     <td>
-      <span></span>
+      <span [attr.uk-icon]="product.available ? 'check':'close'"></span>
     </td>
     <td style="width: 250px">
-      <a></a>
-      <a></a>
+      <a><input type="button" class="uk-button uk-button-primary" value="Edytuj"></a>
+      <a (click)="removeProduct(product.id)"><input type="button" class="uk-button uk-button-danger" value="Usuń"></a>
     </td>
   </tr>
   </tbody>
 </table>
 <div>
-  <a><input style="background-color: #32d296; color: white" class="uk-button" type="button" value="Dodaj produkt"></a>
+  <a routerLink="editor"><input style="background-color: #32d296; color: white" class="uk-button" type="button" value="Dodaj produkt"></a>
 </div>
