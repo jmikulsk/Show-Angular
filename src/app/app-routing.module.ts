@@ -15,8 +15,10 @@ const routes: Routes =
         [
           {path: '', component: ProductsComponent},
           {path: 'editor', component: EditorComponent},
+          {path: 'editor/:id', component: EditorComponent},
           {path: 'products', component: ProductsComponent},
           {path:'products/editor',component:EditorComponent},
+          {path:'products/editor/:id',component:EditorComponent},
           {path: 'shipping', component: ShippingComponent}
         ]
     }

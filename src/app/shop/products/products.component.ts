@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "./Product";
 import {ProductStorageService} from "../../product-storage.service";
+import {HttpClientService} from "../../http-client.service";
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import {ProductStorageService} from "../../product-storage.service";
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private productStorage:ProductStorageService) {
+  constructor(private productStorage:ProductStorageService, private httpClient:HttpClientService) {
   }
 
   ngOnInit(): void {
@@ -20,10 +21,12 @@ export class ProductsComponent implements OnInit {
   products:Product[] = [];
 
   getProducts(){
-    this.productStorage.getProducts().subscribe(products=>this.products = products);
+    this.httpClient.getProducts().subscribe(products=>this.products = products);
 
   }
   removeProduct(id: number){
-    this.productStorage.removeProduct(id);
+    this.httpClient.removeProducts(id).subscribe(r=>{
+      this.getProducts();
+    });
   }
 }
