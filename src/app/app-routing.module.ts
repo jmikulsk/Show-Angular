@@ -19,12 +19,14 @@ const routes: Routes =
           {path: 'editor', component: EditorComponent},
           {path: 'editor/:id', component: EditorComponent},
           {path: 'products', component: ProductsComponent},
-          {path:'products/editor',component:EditorComponent},
-          {path:'products/editor/:id',component:EditorComponent},
+          {path:'products/editor' , component: EditorComponent},
+          {path:'products/editor/:id', component: EditorComponent},
           {path: 'shipping', component: ShippingComponent},
+          {path:'editor-u', component: EditorUComponent},
+          {path:'editor-u/:id', component: EditorUComponent},
           {path: 'users', component: UsersComponent},
-          {path:'users/editor',component:UsersComponent},
-          {path:'users/editor/:id',component:EditorUComponent},
+          {path:'users/editor', component: EditorUComponent},
+          {path:'users/editor/:id', component: EditorUComponent},
         ]
     }
   ];

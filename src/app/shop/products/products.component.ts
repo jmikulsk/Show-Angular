@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "./Product";
-import {ProductStorageService} from "../../product-storage.service";
-import {HttpClientService} from "../../http-client.service";
+import {Product} from './Product';
+import {ProductStorageService} from '../../product-storage.service';
+import {HttpClientService} from '../../http-client.service';
 
 @Component({
   selector: 'app-products',
@@ -10,24 +10,29 @@ import {HttpClientService} from "../../http-client.service";
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private productStorage:ProductStorageService, private httpClient:HttpClientService) {
+  constructor(private productStorage: ProductStorageService, private httpClient: HttpClientService) {
   }
+
+  products: Product[] = [];
 
   ngOnInit(): void {
     this.getProducts();
 
   }
 
-  products:Product[] = [];
-
-  getProducts(){
-    this.httpClient.getProducts().subscribe(products=>this.products = products);
+  getProducts() {
+    this.httpClient.getProducts().subscribe(products => this.products = products);
 
   }
-  removeProduct(id: number){
-    this.httpClient.removeProducts(id).subscribe(r=>{
+  removeProduct(id: number) {
+    this.httpClient.removeProducts(id).subscribe(r => {
       this.getProducts();
     });
-  }
 
+  }
+  // toogleAvailable(id: number){
+  //   this.httpClient.toogleAvailable(id).subscribe(=>{
+  //     this.getProducts();
+  //   });
+// }
 }
